@@ -28,7 +28,7 @@ s.t. TIEMPO_MAXIMO {i in LOCALIZACIONES union NUEVAS_LOCALIZACIONES, j in DISTRI
 /*s.t. BALANCE_ESFUERZO1 {i in LOCALIZACIONES union NUEVAS_LOCALIZACIONES, a in LOCALIZACIONES union NUEVAS_LOCALIZACIONES: a!=i}: sum{j in DISTRITOS} llamadas[i,j] - 1.5 * sum{j in DISTRITOS} llamadas[a, j] <= (1 - asignadas[i])*llamadas_maximas[i];
 s.t. BALANCE_ESFUERZO2 {i in LOCALIZACIONES union NUEVAS_LOCALIZACIONES, a in LOCALIZACIONES union NUEVAS_LOCALIZACIONES: a!=i}: sum{j in DISTRITOS} llamadas[i,j] - 1.5 * sum{j in DISTRITOS} llamadas[a, j] <= (1 - asignadas[a])*llamadas_maximas[i];*/
 
-s.t. BALANCE_ESFUERZO {i in LOCALIZACIONES union NUEVAS_LOCALIZACIONES, a in LOCALIZACIONES union NUEVAS_LOCALIZACIONES: a!=i}: sum{j in DISTRITOS} llamadas[i,j] <= sum{j in DISTRITOS}1.5*llamadas[a, j];
+s.t. BALANCE_ESFUERZO {i in LOCALIZACIONES union NUEVAS_LOCALIZACIONES, a in LOCALIZACIONES union NUEVAS_LOCALIZACIONES: a!=i}: sum{j in DISTRITOS} llamadas[i,j] <= sum{j in DISTRITOS}1.5*llamadas[a, j] + (1 - asignadas[a])*max_llamadas;
 
 
 /*s.t. BALANCE_ESFUERZO2 {i in LOCALIZACIONES union NUEVAS_LOCALIZACIONES, a in LOCALIZACIONES union NUEVAS_LOCALIZACIONES: a!=i}: 
@@ -46,3 +46,4 @@ s.t. CONSTRUCCION1 {i in LOCALIZACIONES union NUEVAS_LOCALIZACIONES}: sum{j in D
 s.t. CONSTRUCCION2 {i in LOCALIZACIONES union NUEVAS_LOCALIZACIONES}: sum{j in DISTRITOS} llamadas[i,j] >=asignadas[i];
 /*s.t. CONSTRUCCION2 {i in LOCALIZACIONES union NUEVAS_LOCALIZACIONES, j in DISTRITOS}: llamadas[i,j] <= llamadas_maximas[i]*asignada_distrito[i,j];*/
 /*s.t. CONSTRUCCION2 {i in LOCALIZACIONES union NUEVAS_LOCALIZACIONES}: asignadas[i] <= sum{j in DISTRITOS} (llamadas[i,j]/llamadas_maximas[i]);*/
+
