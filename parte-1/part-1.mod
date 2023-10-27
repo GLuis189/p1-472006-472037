@@ -19,6 +19,6 @@ s.t. LLAMADAS_EXACTAS {j in DISTRITOS}: sum{i in LOCALIZACIONES} llamadas[i,j] =
 /* Cada locaclización no puede atender más de 10000 llamadas*/
 s.t. LLAMADAS_MAXIMO {i in LOCALIZACIONES}: sum{j in DISTRITOS} llamadas[i,j] <= llamadas_maximas[i];
 
-s.t. BALANCE_ESFUERZO {i in LOCALIZACIONES, a in LOCALIZACIONES: a!=i}: sum{j in DISTRITOS} llamadas[i,j] <= sum{j in DISTRITOS}1.5*llamadas[a, j];
+s.t. BALANCE_ESFUERZO {i in LOCALIZACIONES, a in LOCALIZACIONES: a!=i}: sum{j in DISTRITOS} llamadas[i,j] <= 1.5*sum{j in DISTRITOS}llamadas[a, j];
 
 s.t. TIEMPO_MAXIMO {i in LOCALIZACIONES, j in DISTRITOS}: llamadas[i,j]*tiempo_llamada[i,j] <= llamadas[i,j]*tiempo_maximo;

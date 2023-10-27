@@ -26,7 +26,7 @@ s.t. LLAMADAS_MAXIMO {i in LOCALIZACIONES union NUEVAS_LOCALIZACIONES}: sum{j in
 s.t. TIEMPO_MAXIMO {i in LOCALIZACIONES union NUEVAS_LOCALIZACIONES, j in DISTRITOS}: llamadas[i,j]*tiempo_llamada[i,j] <= llamadas[i,j]*tiempo_maximo;
 
 /*El número total de llamadas de un parking seleccionado no puede ser mayor que el 50% del total de llamadas de otro parking seleccionado*/
-s.t. BALANCE_ESFUERZO {i in LOCALIZACIONES union NUEVAS_LOCALIZACIONES, a in LOCALIZACIONES union NUEVAS_LOCALIZACIONES: a!=i}: sum{j in DISTRITOS} llamadas[i,j] <= sum{j in DISTRITOS}1.5*llamadas[a, j] + (1 - seleccionado[a])*max_llamadas;
+s.t. BALANCE_ESFUERZO {i in LOCALIZACIONES union NUEVAS_LOCALIZACIONES, a in LOCALIZACIONES union NUEVAS_LOCALIZACIONES: a!=i}: sum{j in DISTRITOS} llamadas[i,j] <= 1.5*sum{j in DISTRITOS}llamadas[a, j] + (1 - seleccionado[a])*max_llamadas;
 
 /*Si las llamadas de un distrito son mayores o iguales al 75% de las llamadas máximas, se tienen que dividir entre más de un parking*/
 s.t. DISTRIBUCION_LLAMADAS {j in DISTRITOS, i in LOCALIZACIONES union NUEVAS_LOCALIZACIONES}: llamadas[i,j]<= (0.75 * max_llamadas -1)*seleccionado_por_distrito[i,j];
