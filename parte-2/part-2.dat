@@ -30,4 +30,10 @@ param coste_minuto:= 2;
 
 param max_llamadas:=10000;
 
+param porcentaje_balance:= 0.5;
+
+param porcentaje_maximo:= 0.75;
+
+param porcentaje_minimo:= 0.1;
+
 end;
