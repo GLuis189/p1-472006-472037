@@ -20,11 +20,10 @@ D4				7500
 D5				5500;
 
 /*lo hacemos por si se quiere cambiar el número máximo para alguna localización*/
-param llamadas_maximas:=
-L1				10000
-L2				10000
-L3				10000;
+param llamadas_maximas:=10000;
 
 param tiempo_maximo:=35;
+
+param porcentaje_balance:= 0.5;
 
 end;
