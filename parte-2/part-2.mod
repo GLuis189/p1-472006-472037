@@ -12,9 +12,9 @@ param coste_construir;
 param coste_minuto;
 param max_llamadas;
 param tiempo_maximo;
-param porcentaje_balance:= 0.5;
-param porcentaje_maximo:= 0.75;
-param porcentaje_minimo:= 0.1;
+param porcentaje_balance;
+param porcentaje_maximo;
+param porcentaje_minimo;
 
 /*Funcion objetivo a minimizar*/
 minimize COSTE: sum{i in LOCALIZACIONES union NUEVAS_LOCALIZACIONES, j in DISTRITOS} tiempo_llamada[i, j] * llamadas[i,j]*coste_minuto + sum{i in NUEVAS_LOCALIZACIONES} coste_construir*seleccionado[i];
